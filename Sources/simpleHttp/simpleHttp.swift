@@ -20,7 +20,6 @@ class SimpleHttpClinet {
     
     // have to write a common method to support PUT
     func post(url:String,postdata:Data?)->[String: Any] {
-        var serverResponse:[String: Any] = [:]
         let url = URL(string: url)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -35,7 +34,6 @@ class SimpleHttpClinet {
     }
     
     func get(url:String)->[String: Any] {
-        var serverResponse:[String: Any] = [:]
         let url = URL(string: url)!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -48,7 +46,6 @@ class SimpleHttpClinet {
         
     // have to write a common method to support PUT
     func put(url:String,postdata:Data?)->[String: Any] {
-        var serverResponse:[String: Any] = [:]
         let url = URL(string: url)!
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
@@ -64,7 +61,6 @@ class SimpleHttpClinet {
     
     
     func delete(url:String)->[String: Any] {
-        var serverResponse:[String: Any] = [:]
         let url = URL(string: url)!
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
