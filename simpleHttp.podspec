@@ -78,7 +78,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/senthilx6/simpleHttp.git", :commit => "2a16ba3eacd29b674c6ebc35154c07a9c0947947" }
+  spec.source       = { :git => "https://github.com/senthilx6/simpleHttp.git", :commit => "2a16ba3eacd29b674c6ebc35154c07a9c0947947", :tag => spec.version }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
