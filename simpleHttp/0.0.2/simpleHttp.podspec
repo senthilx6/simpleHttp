@@ -49,6 +49,7 @@ Pod::Spec.new do |spec|
   #
   #  Specify a social_media_url where others can refer to, for example a twitter
   #  profile URL.
+  
   #
 
   spec.author             = { "senthil vel" => "email@address.com" }
@@ -58,6 +59,8 @@ Pod::Spec.new do |spec|
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
+  
+  
   #  If this Pod runs only on iOS or OS X, then specify the platform and
   #  the deployment target. You can optionally include the target after the platform.
   #
