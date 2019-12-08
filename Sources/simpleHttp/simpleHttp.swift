@@ -1,7 +1,7 @@
 import Foundation
 
 
-class SimpleHttpClinet {
+open class SimpleHttpClinet {
     
     var url:String;
     var creds:Dictionary<String,String>;
@@ -19,7 +19,7 @@ class SimpleHttpClinet {
    
     
     // have to write a common method to support PUT
-    func post(url:String,postdata:Data?)->[String: Any] {
+    open func post(url:String,postdata:Data?)->[String: Any] {
         let url = URL(string: url)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -33,7 +33,7 @@ class SimpleHttpClinet {
         return getResponse(request:request)
     }
     
-    func get(url:String)->[String: Any] {
+    open func get(url:String)->[String: Any] {
         let url = URL(string: url)!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -45,7 +45,7 @@ class SimpleHttpClinet {
     }
         
     // have to write a common method to support PUT
-    func put(url:String,postdata:Data?)->[String: Any] {
+    open func put(url:String,postdata:Data?)->[String: Any] {
         let url = URL(string: url)!
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
@@ -60,7 +60,7 @@ class SimpleHttpClinet {
     }
     
     
-    func delete(url:String)->[String: Any] {
+    open func delete(url:String)->[String: Any] {
         let url = URL(string: url)!
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
