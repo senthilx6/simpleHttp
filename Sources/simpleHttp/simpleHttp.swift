@@ -87,7 +87,7 @@ open class SimpleHttpClinet {
         self.token = "Token token=\(tokenKey)"
     }
     
-    func getToken()->String {
+    open func getToken()->String {
         return self.token
     }
     
