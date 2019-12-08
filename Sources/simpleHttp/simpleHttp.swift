@@ -6,7 +6,7 @@ open class SimpleHttpClinet {
     var url:String;
     var creds:Dictionary<String,String>;
     var token:String = ""
-    init(url:String,creds:Dictionary<String,String>,token:String="") {
+    public init(url:String,creds:Dictionary<String,String>,token:String="") {
       self.url =  url
       self.creds = creds
         if(token.isEmpty) {
