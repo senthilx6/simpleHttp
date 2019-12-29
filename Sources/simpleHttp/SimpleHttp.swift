@@ -4,10 +4,10 @@ import Foundation
 open class SimpleHttpClinet {
     
 
-    var url:URL
+    var urlHelper:UrlConstructor
     var headerobj:RequestHeaders
     public init (hostname:String,headers:Dictionary<String,Any>){
-        url = URL(string: hostname)!
+        urlHelper = UrlConstructor(domain: hostname)
         headerobj =  RequestHeaders()
         headerobj.headers = headers
     }
@@ -15,8 +15,8 @@ open class SimpleHttpClinet {
     
     
     open func post(path:String,postdata:Data?)->[String: Any] {
-        url.appendPathComponent(path)
-        let requestCreator = RequestCreator(url:url)
+        urlHelper.addPath(path: path)
+        let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
         requestCreator.setRequestMethod(method: "POST")
         requestCreator.addRequestHeaders(requestHeader:headerobj)
         if postdata != nil{
@@ -25,17 +25,31 @@ open class SimpleHttpClinet {
         return getResponse(request:requestCreator.getRequest())
     }
 
-    open func get(path:String)->[String: Any] {
-        url.appendPathComponent(path)
-        let requestCreator = RequestCreator(url:url)
+    open func get(path:String,query:Dictionary<String,String>)->[String: Any] {
+        urlHelper.addPath(path: path)
+        if query != nil {
+            urlHelper.addQueryItems(query: query)
+        }
+        let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
+        requestCreator.setRequestMethod(method: "GET")
+        requestCreator.addRequestHeaders(requestHeader:headerobj)
+        return getResponse(request:requestCreator.getRequest())
+    }
+    
+    open func get(path:String,query:String)->[String: Any] {
+        urlHelper.addPath(path: path)
+        if query != nil {
+            urlHelper.addQuery(query: query)
+        }
+        let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
         requestCreator.setRequestMethod(method: "GET")
         requestCreator.addRequestHeaders(requestHeader:headerobj)
         return getResponse(request:requestCreator.getRequest())
     }
 
     open func put(path:String,postdata:Data?)->[String: Any] {
-        url.appendPathComponent(path)
-        let requestCreator = RequestCreator(url:url)
+        urlHelper.addPath(path: path)
+        let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
         requestCreator.setRequestMethod(method: "PUT")
         requestCreator.addRequestHeaders(requestHeader:headerobj)
         if postdata != nil{
@@ -46,16 +60,16 @@ open class SimpleHttpClinet {
 
 
     open func delete(path:String)->[String: Any] {
-        url.appendPathComponent(path)
-        let requestCreator = RequestCreator(url:url)
+        urlHelper.addPath(path: path)
+        let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
         requestCreator.setRequestMethod(method: "DELETE")
         requestCreator.addRequestHeaders(requestHeader:headerobj)
        return getResponse(request:requestCreator.getRequest())
     }
     
     open func head(path:String)->[String: Any] {
-        url.appendPathComponent(path)
-        let requestCreator = RequestCreator(url:url)
+        urlHelper.addPath(path: path)
+        let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
         requestCreator.setRequestMethod(method: "HEAD")
         requestCreator.addRequestHeaders(requestHeader:headerobj)
        return getResponse(request:requestCreator.getRequest())
