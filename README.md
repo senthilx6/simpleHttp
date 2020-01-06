@@ -25,7 +25,7 @@ To integrate simpleHttp into your Xcode project using CocoaPods, specify it in y
 
 
 ```
-pod 'simpleHttp', '0.0.5'
+pod 'simpleHttp', '0.0.6'
 ```
 
 Then, run the following command:
@@ -42,11 +42,11 @@ import simpleHttp
  use the above command to import the module where you goning to use SimpleHttpClinet
  
  ```
- let adminCreds: Dictionary<String,String> =
-    ["emailid":"apiauthlesspassword@xyz.com","password":"apiauthpassword"]
-  let htppClinet = SimpleHttpClinet(url:"testbaseurl.com",creds:adminCreds)
+        let header  = ["Content-Type":"application/json","Accept":"application/json"]
+        let client =   SimpleHttpClinet(hostname:"https://postman-echo.com",headers: header)
+        let result:[String: Any] =  client.put(path: "put", postdata: nil)
  ```
  
- from the htppClinet object can use **post** , **put** , **get** , **delete**, currently supports  BASIC AUTH , will be releasing other types of auth and provision 
- to include header and other http clinet methofs like OPTIONS,PATCH soon
+ from the htppClinet object you can use **post** , **put** , **get** , **delete**, **head**
+  like OPTIONS,PATCH soon
  
