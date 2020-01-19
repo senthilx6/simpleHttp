@@ -48,5 +48,5 @@ import simpleHttp
  ```
  
  from the htppClinet object you can use **post** , **put** , **get** , **delete**, **head**
-other methods  like OPTIONS,PATCH coming soon.
+other methods  like OPTIONS,PATCH coming soon
  
