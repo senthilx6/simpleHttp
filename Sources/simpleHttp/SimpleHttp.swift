@@ -27,9 +27,7 @@ open class SimpleHttpClinet {
 
     open func get(path:String,query:Dictionary<String,String>)->[String: Any] {
         urlHelper.addPath(path: path)
-        if query != nil {
-            urlHelper.addQueryItems(query: query)
-        }
+        urlHelper.addQueryItems(query: query)
         let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
         requestCreator.setRequestMethod(method: "GET")
         requestCreator.addRequestHeaders(requestHeader:headerobj)
@@ -38,9 +36,15 @@ open class SimpleHttpClinet {
     
     open func get(path:String,query:String)->[String: Any] {
         urlHelper.addPath(path: path)
-        if query != nil {
-            urlHelper.addQuery(query: query)
-        }
+        urlHelper.addQuery(query: query)
+        let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
+        requestCreator.setRequestMethod(method: "GET")
+        requestCreator.addRequestHeaders(requestHeader:headerobj)
+        return getResponse(request:requestCreator.getRequest())
+    }
+    
+    open func get(path:String)->[String: Any] {
+        urlHelper.addPath(path: path)
         let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
         requestCreator.setRequestMethod(method: "GET")
         requestCreator.addRequestHeaders(requestHeader:headerobj)
