@@ -107,6 +107,9 @@ open class SimpleHttpClinet {
         return serverResponse
     }
 
+    func resetCookie(){
+      HTTPCookieStorage.shared.cookies?.forEach(HTTPCookieStorage.shared.deleteCookie)
+    }
 
 
     private func getResponse(request:URLRequest)->[String: Any]  {

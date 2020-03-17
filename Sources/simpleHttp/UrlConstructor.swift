@@ -13,7 +13,6 @@ class UrlConstructor {
     
     init(domain:String){
         urlComponent = URLComponents(string: domain)!
-        print("test")
     }
     
     func addPath(path:String) {
