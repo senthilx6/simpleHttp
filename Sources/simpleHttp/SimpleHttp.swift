@@ -1,7 +1,7 @@
 import Foundation
 
 
-open class SimpleHttpClinet {
+open class SimpleHttpClient {
     
     
     var urlHelper:UrlConstructor
@@ -125,6 +125,7 @@ open class SimpleHttpClinet {
         var temp = 0;
         var serverResponse: Dictionary<String,Any> = [:]
         let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+             let httpResponse:HTTPURLResponse = response as! HTTPURLResponse
             guard error == nil else {
                 return
             }
@@ -132,14 +133,14 @@ open class SimpleHttpClinet {
                 return
             }
             do {
-                //create json object from data
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
                     serverResponse = json
-                    let httpResponse:HTTPURLResponse = response as! HTTPURLResponse
                     serverResponse["status code"] = httpResponse.statusCode
                 }
             } catch let error {
-                print(error.localizedDescription)
+                let decodeString = String(decoding: data, as: UTF8.self)
+                serverResponse["respose"] = decodeString
+                serverResponse["status code"] = httpResponse.statusCode
             }
         })
         task.resume()
@@ -190,7 +191,6 @@ open class SimpleHttpClinet {
         NSLog(go)
         return body as Data
     }
-    
     
 }
 

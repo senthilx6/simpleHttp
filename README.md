@@ -39,11 +39,11 @@ After installing , build the project
 ```
 import simpleHttp
 ```
- use the above command to import the module where you goning to use SimpleHttpClinet
+ use the above command to import the module where you goning to use SimpleHttpClient
  
  ```
         let header  = ["Content-Type":"application/json","Accept":"application/json"]
-        let client =   SimpleHttpClinet(hostname:"https://postman-echo.com",headers: header)
+        let client =   SimpleHttpClient(hostname:"https://postman-echo.com",headers: header)
         let result:[String: Any] =  client.put(path: "put", postdata: nil)
  ```
  
