@@ -133,15 +133,14 @@ open class SimpleHttpClient {
                 return
             }
             do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                    serverResponse = json
+                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                    serverResponse["respose"] = json
                     serverResponse["status code"] = httpResponse.statusCode
-                }
             } catch let error {
                 let decodeString = String(decoding: data, as: UTF8.self)
                 serverResponse["respose"] = decodeString
                 serverResponse["status code"] = httpResponse.statusCode
-            }
+                }
         })
         task.resume()
         while(serverResponse.isEmpty) {
