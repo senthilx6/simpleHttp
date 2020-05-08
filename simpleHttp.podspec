@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "simpleHttp"
-  spec.version      = "0.1.4"
+  spec.version      = "0.1.5"
   spec.summary      = "A simple HTTP client library written in Swift"
 
   # This description is used to generate tags and improve search results.
