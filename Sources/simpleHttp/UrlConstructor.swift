@@ -35,4 +35,9 @@ class UrlConstructor {
         return urlComponent.url!
     }
     
+    func resetQueryParam() {
+        urlComponent.query=""
+        urlComponent.queryItems = []
+    }
+    
 }

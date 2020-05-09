@@ -36,6 +36,7 @@ open class SimpleHttpClient {
     
     open func get(path:String,query:Dictionary<String,String>)->[String: Any] {
         urlHelper.addPath(path: path)
+        urlHelper.resetQueryParam()
         urlHelper.addQueryItems(query: query)
         let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
         requestCreator.setRequestMethod(method: "GET")
@@ -45,6 +46,7 @@ open class SimpleHttpClient {
     
     open func get(path:String,query:String)->[String: Any] {
         urlHelper.addPath(path: path)
+        urlHelper.resetQueryParam()
         urlHelper.addQuery(query: query)
         let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
         requestCreator.setRequestMethod(method: "GET")
@@ -53,6 +55,7 @@ open class SimpleHttpClient {
     }
     
     open func get(path:String)->[String: Any] {
+        urlHelper.resetQueryParam()
         urlHelper.addPath(path: path)
         let requestCreator = RequestCreator(url:urlHelper.getConstructedURL())
         requestCreator.setRequestMethod(method: "GET")
