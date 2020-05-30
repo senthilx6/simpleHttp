@@ -25,7 +25,7 @@ To integrate simpleHttp into your Xcode project using CocoaPods, specify it in y
 
 
 ```
-pod 'simpleHttp', '0.0.6'
+pod 'simpleHttp', '0.1.6'
 ```
 
 Then, run the following command:
